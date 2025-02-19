@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoutDown</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #f4f4f4;
+        }
+        h2 {
+            color: #333;
+        }
+        #daysElapsed {
+            font-size: 100px;
+            color: #007bff;
+            margin-top: 30px;
+        }
+        .time {
+            margin-top: 30px;
+            font-size: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>26 พฤศจิกายน 2024</h2>
+    <p class="days" id="daysElapsed">กำลังโหลด...</p>
+    <p class="time" id="timeElapsed">กำลังโหลด...</p>
+
+    <script>
+        function calculateDaysElapsed() {
+            let startDate = new Date("2024-11-26");
+            let now = new Date();
+            let diffTime = now - startDate;
+            let daysElapsed = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+            let hours = Math.floor((diffTime / (1000 * 60 * 60)) % 24); 
+            let minutes = Math.floor((diffTime / (1000 * 60)) % 60); 
+            let seconds = Math.floor((diffTime / 1000) % 60);
+            document.getElementById("daysElapsed").innerHTML = `ผ่านไปแล้ว ${daysElapsed} วัน`;
+            document.getElementById("timeElapsed").innerHTML = `${hours} : ${minutes} : ${seconds}`;
+        }
+
+        calculateDaysElapsed();
+        setInterval(calculateDaysElapsed, 1000); 
+        setInterval(updateTimeElapsed, 1000); 
+        updateTimeElapsed(); 
+    </script>
+
+</body>
+</html>
